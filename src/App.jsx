@@ -4,7 +4,7 @@ import  {BrowserRouter  as Router, Routes,Route} from 'react-router-dom'
 import Details from './components/product/Details'
 import Navbar from './components/Navbar'
 import Searchproduct from './components/product/Searchproduct'
-import Register from './components/User/register'
+import Register from './components/User/Register'
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/User/login'
