@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Showproduct from './components/product/showproduct'
+import Showproduct from './components/product/Showproduct'
 import  {BrowserRouter  as Router, Routes,Route} from 'react-router-dom'
 import Details from './components/product/Details'
 import Navbar from './components/Navbar'
