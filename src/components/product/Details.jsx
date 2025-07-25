@@ -8,7 +8,7 @@ const Details = () => {
     const [products, setproduct] = useState();
 const {id} = useParams();
 
-const url = "http://localhost:1000/api"
+const url = "https://ecommerce-api-back-end.onrender.com/api"
     useEffect(()=>{
         const fecthProduct = async()=>{
 
