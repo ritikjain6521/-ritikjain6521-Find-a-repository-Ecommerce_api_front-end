@@ -23,6 +23,12 @@ padding: 10px;
 background-color: hsla(293, 82%, 15%, 0.911);
 
 }
+.nav_bar .left{
+  width: 20%;
+  /* background-color: yellow; */
+}
+
+
 .search{
  display: flex;
  justify-content: center;
@@ -84,6 +90,80 @@ td{
 
 
 }
+.nav_bar .search_bar{
+width: 40%;
+background-color: black;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+border: 2px solid grey;
+border-radius: 20px;
+}
+
+
+.nav_bar .right{
+  width: 45%;
+  text-align: center;
+}
+.nav_bar .search_bar input{
+  width: 80%;
+  /* height: 28px; */
+  border:none;
+  background-color: rgb(0, 0, 0);
+  color:white;
+}
+input::placeholder{
+  padding: 10px;
+  font-weight: bold;
+  /* font-size: 1rem; */
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_detail{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.admin{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+label{
+  font-weight: bold;
+  /* font-size: 0.9rem; */
+}
+
+button .btn{
+  font-weight: bold;
+}
+
+span:hover{
+  cursor: pointer;
+}
+td,th{
+  cursor: pointer;
+}
+ .table td,
+ .table th {
+   /* text-align: center; */
+   vertical-align: middle;
+ }
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 250px) {
   body {
     font-size: 12px;

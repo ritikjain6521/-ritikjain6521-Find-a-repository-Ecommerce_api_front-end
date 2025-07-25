@@ -17,6 +17,9 @@ const url = "http://localhost:1000/api"
     const [reload,setreload] =useState([false]);
      const [userAddress,setuserAddress] =useState([]);
        const [userOrder,setuserOrder] =useState([]);
+         const [allUsers, setAllUsers] = useState([]);
+          const [allOrder, setAllOrder] = useState([]);
+       
 
 
     useEffect(()=>{
@@ -31,18 +34,21 @@ const url = "http://localhost:1000/api"
          withCredentials:true
 
             })
-        console.log(api);
+        console.log("products",api.data.products)
         setproduct(api.data.products)
         setfilterdata(api.data.products)
-        Profile();
+       
+
         
         }
     
         fecthProduct();
         userCart();
         getAddress();
-        user_Order();
-
+        getUserOrders();
+        AllUsers();
+       Profile();
+       AllOrders();
 
     },[token,reload] );
 
@@ -60,9 +66,134 @@ const url = "http://localhost:1000/api"
    }   
   }
 ,[] );
+  const addProduct= async(
+    title,
+    description,
+    price,
+    imgSrc,
+    category,
+    qty
+  ) => {
+    const api = await axios.post(
+      `${url}/product/add`,
+      { title, description, price, imgSrc, category, qty },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    setreload(!reload);
+    toast.success(api.data.message, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    return api.data;
+  };
+
+//all orders
+  const AllOrders = async () => {
+    const api = await axios.get(`${url}/payment/allorders`,{
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    // setUserOrder(api.data.orders);
+    setAllOrder(api.data.orders);
+     console.log("orders",api.data.orders)
+  };
+
+ const getUserOrders= async()=>{
+
+            const api = await axios.get(`${url}/payment/orders`,{
+
+          headers:{
+            "Content-Type":"Application/json",
+            Auth:token
+
+          },
+         withCredentials:true
+
+            })
+       //console.log("user order", api.data);
+       
+  setuserOrder(api.data.orders)
+       
+   console.log("user order=",api.data.orders)   
+}
+
+
+
+
+
+ // editProduct 
+ const editProuduct = async (
+    id,
+    title,
+    description,
+    price,
+    imgSrc,
+    category,
+    qty
+  ) => {
+    const api = await axios.put(
+      `${url}/product/${id}`,
+      { title, description, price, imgSrc, category, qty },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    setreload(!reload);
+    toast.success(api.data.message, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    return api.data;
+  };
+  // deleteproduct
+  const deleteProduct = async (id) => {
+    const api = await axios.delete(`${url}/product/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Auth: token,
+      },
+      withCredentials: true,
+    });
+    setreload(!reload);
+    toast.success(api.data.message, {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    return api.data;
+  };
 
 // register user
-
   const register = async(name,email,password)=>{
 
       const api = await axios.post(`${url}/user/register`,{name,email,password},{
@@ -91,8 +222,6 @@ const url = "http://localhost:1000/api"
   };
   
   // login user
-
-
   const  Login = async(email,password)=>{
 
     const api = await axios.post(`${url}/user/login`,{email,password},{
@@ -124,7 +253,7 @@ const url = "http://localhost:1000/api"
   
     //alert(api.data.message)
 };
-
+// Logout
 const Logout = async () =>{
  setIsAuthenticated(false)
 settoken("")
@@ -144,8 +273,8 @@ toast.success("Logout successfully", {
 
 
 }
-// user profile
 
+// user profile
 const Profile = async()=>{
 
   const api = await axios.get(`${url}/user/profile`,{
@@ -159,10 +288,11 @@ withCredentials:true
 
   })
   setuser(api.data.user)
+  console.log("ritikjain",api.data.user)
+  
 
 //console.log(api.data)
 }
-
 // add to cart
 const Addtocart = async(productId,title,price,qty,imgSrc)=>{
 
@@ -250,7 +380,7 @@ withCredentials:true
 
 
 };
-
+// removeformcat 
 const removeformcart = async(productId)=>{
 
   const api = await axios.delete(`${url}/cart/remove/${productId}`,{
@@ -281,6 +411,7 @@ withCredentials:true
 
 console.log(api.data)
 }
+// clearcart
 const clearcart = async()=>{
 
   const api = await axios.delete(`${url}/cart/clear`,{
@@ -311,6 +442,7 @@ withCredentials:true
 
 console.log(api.data)
 }
+// shippingAddress
 const shippingAddress = async(fullname,address,city,state,contury,pincode,mobileno)=> {
 
   const api = await axios.post(`${url}/address/add`,{fullname,address,city,state,contury,pincode,mobileno},{
@@ -341,6 +473,7 @@ withCredentials:true
 
    return api.data
 }
+// getAddress
  const getAddress = async()=>{
 
             const api = await axios.get(`${url}/address/get`,{
@@ -359,29 +492,30 @@ withCredentials:true
        
       
 }
- const user_Order = async()=>{
+// user_order
 
-            const api = await axios.get(`${url}/payment/userorder`,{
+//get all users
+   const AllUsers = async () => {
+    const api = await axios.get(`${url}/user/all`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    // setUserOrder(api.data.orders);
+    // setAllOrder(api.data.orders);
+    console.log("user",api.data)
+    setAllUsers(api.data)
+  };
 
-          headers:{
-            "Content-Type":"Application/json",
-            Auth:token
 
-          },
-         withCredentials:true
-
-            })
-       //console.log("user order", api.data);
-       
-  setuserOrder(api.data)
-       
-      
-}
-console.log("user order=",userOrder)
+  
 
 
   return (
-    <Appcontext.Provider value={{products,register,Login,IsAuthenticated,setIsAuthenticated,url,token,filterdata,setfilterdata,Logout,setuser,user,Addtocart,cart,decreaseqty,removeformcart,shippingAddress,userAddress,clearcart,userOrder}}>{props.children}</Appcontext.Provider>
+    <Appcontext.Provider value={{products,register,Login,IsAuthenticated,setIsAuthenticated,url,token,filterdata,setfilterdata,Logout,setuser,user,Addtocart,cart,decreaseqty,removeformcart,shippingAddress,userAddress,clearcart,userOrder
+      ,editProuduct,deleteProduct,addProduct,allUsers,allOrder
+    }}>{props.children}</Appcontext.Provider>
   )
 }
 

@@ -8,11 +8,15 @@ import Register from './components/User/register'
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/User/login'
-import Profile from './components/User/Profile'
+import Profile from './components/Profile'
 import Cart from './components/Cart'
 import Address from "./components/Address";
 import Checkout from "./components/Checkout";
 import OrderConfirmation from "./components/OrderConfirmation";
+import AdminProduct from "./components/AdminProduct";
+import EditProduct from "./components/EditProduct";
+import AddProduct from "./components/Addproduct";
+import AllUsers from "./components/AllUsers";
 
 
 
@@ -43,8 +47,14 @@ const App =() => {
       <Route path='/cart' element={<Cart/>} /> 
       <Route path='/Address' element={<Address/>} />
        <Route path='/Checkout' element={<Checkout/>} />
-         <Route path='/orderconfirmation' element={<OrderConfirmation/>} />
-      
+       <Route path='/orderconfirmation' element={<OrderConfirmation/>} /> 
+       <Route path="/admin" element={<AdminProduct />} />
+       <Route path="/admin/edit/:id" element={<EditProduct />} />
+       <Route path="/admin/add" element={<AddProduct />} />
+     
+         <Route path="/admin/allusers" element={< AllUsers />} />
+            <Route path="/admin/allorder" element={<Profile/>} />
+                    
         </Routes>
         </Router>
 

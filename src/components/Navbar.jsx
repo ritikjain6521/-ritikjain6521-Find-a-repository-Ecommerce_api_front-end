@@ -39,7 +39,7 @@ const Navbar=()=> {
                        {"Admin Panel"}
                      </Link>
                    </>
-                 ) : (
+                )  : (
   
        <>
                    <Link
@@ -75,23 +75,10 @@ search
                            </>
                          )}
          
-         
-         
-         
-         
-         
-         </>
+        
 
 
 
-
-
-
-
-
-
-
-        )}
         {IsAuthenticated && (
        <>
      <Link to={"/cart"} type="button" className="btn btn-primary position-relative mx-3">
@@ -118,17 +105,21 @@ search
 
 
           }}>Logout</button>
+             <Link
+                      to={"/admin"}
+                      className="btn btn-info mx-2"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      Admin
+                    </Link>
           
        </>
 
-
-
-
-
-  )
-
-
-        }
+  )}
+  </> 
+  )}
+       
+    
     {location.pathname.includes("/admin") && (
                  <>
                    <Link to={"/"} className="btn btn-info mx-2">
@@ -153,14 +144,15 @@ search
       </div>
       
     
-     {
-        location.pathname == "/" &&(
+     
+       { location.pathname == "/" &&(
    
     <div className="sub_br">
       <div className="items " onClick={()=> setfilterdata(products)}>No filer</div>
       <div className="items"onClick={()=> filterbyCategory("Mobile")}>Mobile</div>
       <div className="items"onClick={()=> filterbyCategory("leptop")}>leptop</div>
       <div className="items"onClick={()=> filterbyCategory("HP Leptop bug")}>Leptop Begg</div>
+            <div className="items"onClick={()=> filterbyCategory("Headphones")}>Noise Buds </div>
       <div className="items"onClick={()=> filterbyprice("10000")}>10000</div>
       <div className="items"onClick={()=> filterbyprice("15000")}>15000</div>
       <div className="items"onClick={()=> filterbyprice("20000")}>20000</div>
@@ -168,10 +160,7 @@ search
       <div className="items"onClick={()=> filterbyprice("17000")}>17000</div>
       <div className="items"onClick={()=> filterbyprice("1800")}>18000</div>
     </div>
-            )
-
-
-}
+            )}
      
     </div>
     
