@@ -1,11 +1,11 @@
 
 import React, { useContext } from "react";
 import { useState } from "react";
-import AppContext from "../context/AppContext";
+import Appcontext from "../context/Appcontext";
 import { useNavigate } from "react-router-dom";
 
 const Address = () => {
-  const { shippingAddress, userAddress } = useContext(AppContext);
+  const { shippingAddress, userAddress } = useContext(Appcontext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
      fullname:"",
