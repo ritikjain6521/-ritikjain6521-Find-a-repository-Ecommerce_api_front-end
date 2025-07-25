@@ -7,7 +7,7 @@ import Searchproduct from './components/product/Searchproduct'
 import Register from './components/User/Register'
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Login from './components/User/login'
+import Login from './components/User/Login'
 import Profile from './components/Profile'
 import Cart from './components/Cart'
 import Address from "./components/Address";
