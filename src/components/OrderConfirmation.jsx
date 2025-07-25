@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import AppContext from "../context/AppContext";
+import Appcontext from "../context/Appcontext";
 import ShowOrderProduct from "./ShowOrderProduct";
 
 const OrderConfirmation = () => {
-  const { userOrder } = useContext(AppContext);
+  const { userOrder } = useContext(Appcontext);
   const [latestOrder, setLatestOrder] = useState({});
   useEffect(() => {
     if (userOrder) {
