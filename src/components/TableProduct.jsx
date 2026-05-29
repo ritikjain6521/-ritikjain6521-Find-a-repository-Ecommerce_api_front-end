@@ -36,6 +36,7 @@ useEffect(() => {
   
   return (
     <>
+    <div className="table-responsive">
     <table className="table table-bordered border-primary text-center">
   <thead>
     <tr>
@@ -93,6 +94,7 @@ delete
   
   </tbody>
 </table>
+</div>
     
     
     

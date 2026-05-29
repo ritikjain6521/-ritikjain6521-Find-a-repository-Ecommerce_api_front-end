@@ -59,7 +59,7 @@ search
 
 
       </form>
-      <div className="right">
+      <div className="right d-flex flex-wrap justify-content-center align-items-center gap-2">
         {!location.pathname.includes("/admin")&&(
          <>
          

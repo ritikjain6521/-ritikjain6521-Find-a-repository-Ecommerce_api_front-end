@@ -43,7 +43,8 @@ background-color: hsla(293, 82%, 15%, 0.911);
  border: none;
  background-color: black;
  color: white;
- width: 400px;
+ width: 100%;
+ max-width: 400px;
 
 }
 .search input::placeholder{
@@ -164,44 +165,36 @@ td,th{
 
 
 
-@media only screen and (max-width: 250px) {
-  body {
-    font-size: 12px;
-  }
-
+@media only screen and (max-width: 768px) {
   .nav_bar {
     flex-direction: column;
-    padding: 5px;
-    gap: 5px;
+    padding: 10px;
+    gap: 10px;
     text-align: center;
+  }
+
+  .nav_bar .left, .nav_bar .right, .search, .nav_bar .search_bar {
+    width: 100%;
   }
 
   .search {
-    width: 90%;
     padding: 5px;
-    flex-direction: column;
-  }
-
-  .search input {
-    width: 100%;
-    font-size: 14px;
   }
 
   .sub_br {
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 5px;
-    padding: 5px;
+    padding: 10px;
   }
 
   .sub_br .items {
-    width: 100%;
-    text-align: center;
-    padding: 8px;
+    padding: 5px 10px;
   }
-
-  .logo {
-    justify-content: center;
-    width: 100%;
+  
+  .product_detail, .admin {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 /* Small smartphones (≤ 480px) */

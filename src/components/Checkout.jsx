@@ -54,7 +54,7 @@ const Checkout=()=> {
      console.log("order response",OrderRespons)
      const{orderId, amount:orderAmount}= OrderRespons.data;
       var options = {
-    "key": "rzp_test_AJvNPrJVEVbVga", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_test_Sv7JoVGcWffis8", // Enter the Key ID generated from the Dashboard
     "amount": orderAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "Rj devloper",
@@ -116,7 +116,7 @@ const Checkout=()=> {
    <div className="container  my-3">
 
     <h1 className='text-center'>Order Summary</h1>
-    
+    <div className="table-responsive">
    <table className="table table-bordered border-primary">
   <thead>
     <tr>
@@ -159,6 +159,7 @@ const Checkout=()=> {
 
   </tbody>
 </table>
+</div>
       </div>
       <div className="container text-center my-5">
 

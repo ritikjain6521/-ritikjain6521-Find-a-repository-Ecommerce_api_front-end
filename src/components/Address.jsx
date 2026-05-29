@@ -180,7 +180,7 @@ const Address = () => {
             </div>
           </div>
 
-          <div className="d-grid col-6 mx-auto my-3">
+          <div className="d-grid col-md-6 col-12 mx-auto my-3">
             <button type="submit" className="btn btn-primary" 
             style={{fontWeight:'bold'}}>
               Submit
@@ -188,7 +188,7 @@ const Address = () => {
           </div>
         </form>
         {userAddress && (
-          <div className="d-grid col-6 mx-auto my-3">
+          <div className="d-grid col-md-6 col-12 mx-auto my-3">
             <button className="btn btn-warning"
             onClick={()=>navigate('/checkout')}
             style={{fontWeight:'bold'}}
