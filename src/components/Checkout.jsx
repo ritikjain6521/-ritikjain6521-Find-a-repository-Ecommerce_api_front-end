@@ -116,7 +116,7 @@ const Checkout=()=> {
    <div className="container  my-3">
 
     <h1 className='text-center'>Order Summary</h1>
-    <div className="table-responsive">
+    
    <table className="table table-bordered border-primary">
   <thead>
     <tr>
@@ -159,7 +159,6 @@ const Checkout=()=> {
 
   </tbody>
 </table>
-</div>
       </div>
       <div className="container text-center my-5">
 
