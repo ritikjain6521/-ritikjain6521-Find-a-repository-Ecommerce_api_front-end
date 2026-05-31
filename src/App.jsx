@@ -17,6 +17,7 @@ import AdminProduct from "./components/AdminProduct";
 import EditProduct from "./components/EditProduct";
 import AddProduct from "./components/Addproduct";
 import AllUsers from "./components/AllUsers";
+import AdminReports from "./components/AdminReports";
 
 
 
@@ -54,6 +55,7 @@ const App =() => {
      
          <Route path="/admin/allusers" element={< AllUsers />} />
             <Route path="/admin/allorder" element={<Profile/>} />
+            <Route path="/admin/reports" element={<AdminReports />} />
                     
         </Routes>
         </Router>

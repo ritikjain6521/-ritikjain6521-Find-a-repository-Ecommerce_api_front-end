@@ -103,6 +103,7 @@ const Navbar = () => {
                 <Link to={"/admin/add"} className="btn btn-warning mx-2">Add Product</Link>
                 <Link to={"/admin/allorder"} className="btn btn-secondary mx-2">All Order</Link>
                 <Link to={"/admin/allusers"} className="btn btn-info mx-2">All Users</Link>
+                <Link to={"/admin/reports"} className="btn mx-2" style={{background:"linear-gradient(90deg,#a855f7,#7c3aed)",color:"#fff",fontWeight:"bold"}}>📊 Reports</Link>
               </>
             )}
           </div>
@@ -141,6 +142,7 @@ const Navbar = () => {
               <Link to={"/admin/add"} className="btn btn-warning mobile-menu-item" onClick={closeMenu}>Add Product</Link>
               <Link to={"/admin/allorder"} className="btn btn-secondary mobile-menu-item" onClick={closeMenu}>All Order</Link>
               <Link to={"/admin/allusers"} className="btn btn-info mobile-menu-item" onClick={closeMenu}>All Users</Link>
+              <Link to={"/admin/reports"} className="btn mobile-menu-item" style={{background:"linear-gradient(90deg,#a855f7,#7c3aed)",color:"#fff",fontWeight:"bold"}} onClick={closeMenu}>📊 Reports</Link>
             </>
           )}
         </div>
