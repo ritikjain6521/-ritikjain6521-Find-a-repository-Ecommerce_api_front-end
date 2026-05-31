@@ -30,72 +30,69 @@ const Profile = () => {
         <h1 className="text-center my-3">Total Order's = {products?.length}</h1>
 
           <div className="container my-5">
-            <table className="table table-dark table-bordered border-primary">
-              <thead>
-                <tr className="text-center">
-                  <th scope="col">orderItems</th>
-                  <th scope="col"> OrderDetails & ShippingAddress</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products?.map((products) => (
-                  <tr key={products._id}>
-                    <th>
-                      <OrderDetail
-                        orders={products?.orderitems}
-                        totalAmount={products?.amount}
-                      />
-                    </th>
-                    <td scope="row">
-                      <ul>
+            {products?.map((product) => (
+              <div 
+                key={product._id} 
+                className="order-card-responsive mb-4 p-3 p-md-4" 
+                style={{ 
+                  border: "1px solid hsla(293, 82%, 50%, 0.5)", 
+                  borderRadius: "12px", 
+                  background: "linear-gradient(145deg, hsl(293, 60%, 10%), hsl(270, 60%, 8%))" 
+                }}
+              >
+                <div className="row">
+                  {/* Left Side - Order Items */}
+                  <div className="col-lg-7 col-md-12 mb-4 mb-lg-0">
+                    <h5 className="text-center text-light mb-3" style={{ color: "#e9d5ff" }}>🛒 Order Items</h5>
+                    <OrderDetail
+                      orders={product?.orderitems}
+                      totalAmount={product?.amount}
+                    />
+                  </div>
+
+                  {/* Right Side - Shipping Details */}
+                  <div className="col-lg-5 col-md-12">
+                    <h5 className="text-center text-light mb-3" style={{ color: "#e9d5ff" }}>📍 Order Details & Shipping</h5>
+                    <div 
+                      className="shipping-details p-3" 
+                      style={{ 
+                        backgroundColor: "hsla(270, 50%, 15%, 0.5)", 
+                        borderRadius: "8px",
+                        border: "1px solid hsla(293, 40%, 30%, 0.5)"
+                      }}
+                    >
+                      <ul className="list-unstyled mb-0 text-light" style={{ fontSize: "0.95rem", lineHeight: "1.9" }}>
                         <li>
-                          <span style={{ fontWeight: "bold" }}>
-                            Order Id :{" "}
-                          </span>
-                          {products?.orderId}
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>Order Id : </span>
+                          <span style={{ wordBreak: "break-all" }}>{product?.orderId}</span>
                         </li>
                         <li>
-                          <span style={{ fontWeight: "bold" }}>
-                            PaymentId :{" "}
-                          </span>
-                          {products?.paymentId}
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>PaymentId : </span>
+                          <span style={{ wordBreak: "break-all" }}>{product?.paymentId}</span>
                         </li>
                         <li>
-                          <span style={{ fontWeight: "bold" }}>
-                            OrderDate :{" "}
-                          </span>
-                          {products?.orderDate}
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>OrderDate : </span>
+                          {product?.orderDate ? new Date(product.orderDate).toLocaleDateString() : "—"}
+                        </li>
+                        <hr style={{ borderColor: "hsla(293, 40%, 50%, 0.3)", margin: "10px 0" }} />
+                        <li>
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>Name : </span>
+                          {product?.userShipping?.fullname}
                         </li>
                         <li>
-                          <span style={{ fontWeight: "bold" }}>Name : </span>
-                          {products?.userShipping?.fullname}
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>Phone : </span>
+                          {product?.userShipping?.mobileno}
                         </li>
                         <li>
-                          <span style={{ fontWeight: "bold" }}>Phone : </span>
-                          {products?.userShipping?.mobileno}
-                        </li>
-                        <li>
-                          <span style={{ fontWeight: "bold" }}>State : </span>
-                          {products?.userShipping?.state}
-                        </li>
-                        <li>
-                          <span style={{ fontWeight: "bold" }}>City : </span>
-                          {products?.userShipping?.city}
-                        </li>
-                        <li>
-                          <span style={{ fontWeight: "bold" }}>PinCode : </span>
-                          {products?.userShipping?.pincode}
-                        </li>
-                        <li>
-                          <span style={{ fontWeight: "bold" }}>Near By : </span>
-                          {products?.userShipping?.address}
+                          <span style={{ color: "#c4b5fd", fontWeight: "bold", width: "100px", display: "inline-block" }}>Address : </span>
+                          {product?.userShipping?.address}, {product?.userShipping?.city}, {product?.userShipping?.state} - {product?.userShipping?.pincode}
                         </li>
                       </ul>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </>
       )}
